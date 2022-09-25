@@ -29,4 +29,8 @@ public class IncomeExpense {
         return expense;
     }
 
+    public double getBalance() {
+        return income - expense;
+    }    
+
 }

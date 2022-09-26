@@ -13,4 +13,8 @@ public class Customer extends Person {
     public void setCustomerPoint(int customer_point) {
         this.customer_point = customer_point;	
     }
+
+    public static Customer getCustomerId() {
+        return null ;
+    }
 }

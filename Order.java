@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Order {
     private String order_id;
-    private ArrayList<Item> order_list;
+    private final ArrayList<Item> order_list;
     private int order_preparing_status = 0;
     private double order_total_amount;
 
@@ -10,10 +10,10 @@ public class Order {
         this.order_list = order_list;
     }
 
-    public ArrayList<Item> getOrder_list() {
+    public ArrayList<Item> order_list(){
         return order_list;
     }
-
+ 
     public String getOrderId() {
         return order_id;
     }
@@ -35,11 +35,11 @@ public class Order {
     }
 
     public String printOrderSummary() {
-        return "";
+        return "" ;
     }
 
     public void calculateTotalOrder() {
-
+        
     }
 
 }

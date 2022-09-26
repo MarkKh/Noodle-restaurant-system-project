@@ -19,6 +19,10 @@ public class Item {
         return item_options;
     }
 
+    public void setItemOptions(ArrayList<String> item_options) {
+        this.item_options = item_options;
+    }
+
     public String getItemId() {
         return item_id;
     }
@@ -39,7 +43,7 @@ public class Item {
         return item_price;
     }
 
-    public void setItemPrice(Double item_price) {
+    public void setItemPrice(double item_price) {
         this.item_price = item_price;
     }
 }

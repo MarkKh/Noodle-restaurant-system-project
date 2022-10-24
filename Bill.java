@@ -28,9 +28,7 @@ public class Bill {
         return order_list;
     }
 
-    public void setOrderlist(Order order_list) {
-        this.order_list = order_list.printOrderSummary();
-    }
+ 
 
     public String getCustomerName() {
         return customer_name;

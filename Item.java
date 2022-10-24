@@ -4,6 +4,7 @@ public class Item {
     private String item_id;
     private String item_name;
     private double item_price;
+    private String size;
     private ArrayList<String> item_options;
 
     public Item(String item_id, String item_name, double item_price) {
@@ -17,6 +18,14 @@ public class Item {
 
     public ArrayList<String> getItemOptions() {
         return item_options;
+    }
+
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
     }
 
     public void setItemOptions(ArrayList<String> item_options) {
@@ -46,4 +55,9 @@ public class Item {
     public void setItemPrice(double item_price) {
         this.item_price = item_price;
     }
+
+    public String toString() {
+        return this.getItemId() + " " + this.getItemName() + " " + this.getItemPrice() + " Baht";
+    }
+
 }

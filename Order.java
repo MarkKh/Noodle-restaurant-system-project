@@ -31,9 +31,9 @@ public class Order {
         double amount = 0;
         for (Item item : Items) {
             if (item.getSize().equalsIgnoreCase("Small") || item.getSize().equalsIgnoreCase("s")) {
-                amount = 0;
-            } else if (item.getSize().equalsIgnoreCase("Medium") || item.getSize().equalsIgnoreCase("m")) {
                 amount = 30;
+            } else if (item.getSize().equalsIgnoreCase("Medium") || item.getSize().equalsIgnoreCase("m")) {
+                amount = 40;
             } else if (item.getSize().equalsIgnoreCase("Large") || item.getSize().equalsIgnoreCase("l")) {
                 amount = 50;
             }

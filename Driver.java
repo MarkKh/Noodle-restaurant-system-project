@@ -5,6 +5,7 @@ public class Driver {
         Scanner scanner = new Scanner(System.in);
 
         ArrayList<Item> Items = new ArrayList<>();
+        Table table = new Table();
 
         Item[] item = new Item[4];
         item[0] = new Item("001", "Noodles blood soup", 30);
@@ -23,6 +24,19 @@ public class Driver {
             int who = scanner.nextInt();
 
             if (who == 1) {
+                String tableNumber;
+
+                System.out.println(""+"\n1.at restaurant"+"\n2.Take home");
+                int choose = scanner.nextInt();
+                if (choose == 1){
+                    System.out.println("Enter table number : ");
+                    tableNumber = scanner.next();
+                    table.setTable(tableNumber);
+                } else if (choose == 2){
+                    tableNumber = "[ Take home ]";
+                    table.setTable(tableNumber);
+                }
+
 
                 System.out.println("Enter the total Menu you would like to order : ");
                 int total = scanner.nextInt();
@@ -49,9 +63,11 @@ public class Driver {
                     } else if (menu.equals("003")) {
                         xmenu = "Steamed noodles without soup";
                         option.add(xmenu);
-                    } else {
+                    } else if (menu.equals("004")) {
                         xmenu = "Steamed noodles without tom yum soup";
                         option.add(xmenu);
+                    } else {
+                        option.add(null);
                     }
 
                     String size;
@@ -80,9 +96,11 @@ public class Driver {
                     } else if (RiceNoodles.equals("5")) {
                         xRiceNoodles = "Egg Noodles";
                         option.add(xRiceNoodles);
-                    } else {
+                    } else if (RiceNoodles.equals("6")) {
                         xRiceNoodles = "Instant Noodles";
                         option.add(xRiceNoodles);
+                    } else {
+                        option.add(null);
                     }
 
                     String meat;
@@ -98,9 +116,11 @@ public class Driver {
                     } else if (meat.equals("3")) {
                         xMeat = "Meatball";
                         option.add(xMeat);
-                    } else {
+                    } else if (meat.equals("4")) {
                         xMeat = "Pork liver";
                         option.add(xMeat);
+                    } else {
+                        option.add(null);
                     }
 
                     String note;
@@ -112,9 +132,12 @@ public class Driver {
                     Items.add(itemm);
                 }
 
-                Order order = new Order(Items);
-                order.calculateTotalOrder();
-                order.printOrderSummary();
+                Order orders = new Order(Items);
+                orders.calculateTotalOrder();
+                System.out.println("-----------------------------Ordered is-----------------------------");
+                System.out.println("Table number " + table.getTable());
+                orders.printOrderSummary();
+                System.out.println("--------------------------------------------------------------------");
 
             } else if (who == 2) {
                 Employee employee = new Employee();
@@ -123,27 +146,26 @@ public class Driver {
                 System.out.println("Password : ");
                 String password = scanner.next();
                 boolean x = employee.Login(username, password);
-                if (x == true){
+                if (x == true) {
                     employee.say();
                 } else {
                     System.out.println("Please try again");
                 }
-               
-                //Order order = new Order(Items);
-                //order.printOrderSummary();
+
+                // Order order = new Order(Items);
+                // order.printOrderSummary();
             } else if (who == 3) {
                 Owner owner = new Owner();
                 System.out.println("Username : ");
                 String username = scanner.next();
                 System.out.println("Password : ");
                 String password = scanner.next();
-                boolean x =  owner.Login(username, password);
-                if(x == true){
+                boolean x = owner.Login(username, password);
+                if (x == true) {
                     owner.say();
                 } else {
                     System.out.println("Please try again");
                 }
-            
 
             } else if (who == 0) {
                 break;

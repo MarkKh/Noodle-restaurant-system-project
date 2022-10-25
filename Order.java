@@ -1,9 +1,13 @@
 import java.util.ArrayList;
+import java.util.UUID;
+
 
 public class Order {
     private String order_id;
     private final ArrayList<Item> Items;
+    private Table order_table;
     private double order_total_amount;
+
 
     public Order(ArrayList<Item> Items) {
         this.Items = Items;
@@ -25,10 +29,12 @@ public class Order {
         return order_total_amount;
     }
 
+
     public void printOrderSummary() {
-        System.out.println();
-        System.out.println("-----------------------------Ordered is-----------------------------");
         double amount = 0;
+        UUID randomUUID = UUID.randomUUID();
+        System.out.println();
+
         for (Item item : Items) {
             if (item.getSize().equalsIgnoreCase("Small") || item.getSize().equalsIgnoreCase("s")) {
                 amount = 30;
@@ -37,10 +43,12 @@ public class Order {
             } else if (item.getSize().equalsIgnoreCase("Large") || item.getSize().equalsIgnoreCase("l")) {
                 amount = 50;
             }
-            System.out.println(item.getItemOptions()+" " + amount+ " Baht");
+            System.out.println(item.getItemOptions() + " " + amount + " Baht");
         }
+        
         System.out.println("Total price of this order is " + getOrderTotalAmount() + " Baht");
-        System.out.println("--------------------------------------------------------------------");
+        System.out.println();
+        System.out.println("Order id "+randomUUID.toString().replaceAll("-", ""));
     }
 
     public void calculateTotalOrder() {

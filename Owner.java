@@ -1,7 +1,19 @@
-public class Owner extends Person {
+public class Owner {
+    private String username;
+    private String password;
 
-    public Owner(String owner_id,String owner_name,String owner_phoneNumber,String owner_emailAddress,String owner_password){
-        super(owner_id,owner_name,owner_phoneNumber,owner_emailAddress,owner_password);
+    public Owner() {
     }
-    
+
+    public boolean Login(String username, String password) {
+        if (username.equals("owner@gmail.com") && password.equals("9876")) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public void say() {
+        System.out.println("Welcome owner!!!");
+    }
 }

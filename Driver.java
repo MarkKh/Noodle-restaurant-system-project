@@ -19,7 +19,7 @@ public class Driver {
             System.out.println("3. Owner");
             System.out.println("0. Exit");
 
-            System.out.println("Please enter 1-3 : ");
+            System.out.println("Please enter 1-3 or 0 for exit : ");
             int who = scanner.nextInt();
 
             if (who == 1) {
@@ -117,9 +117,33 @@ public class Driver {
                 order.printOrderSummary();
 
             } else if (who == 2) {
+                Employee employee = new Employee();
+                System.out.println("Username : ");
+                String username = scanner.next();
+                System.out.println("Password : ");
+                String password = scanner.next();
+                boolean x = employee.Login(username, password);
+                if (x == true){
+                    employee.say();
+                } else {
+                    System.out.println("Please try again");
+                }
+               
                 //Order order = new Order(Items);
                 //order.printOrderSummary();
             } else if (who == 3) {
+                Owner owner = new Owner();
+                System.out.println("Username : ");
+                String username = scanner.next();
+                System.out.println("Password : ");
+                String password = scanner.next();
+                boolean x =  owner.Login(username, password);
+                if(x == true){
+                    owner.say();
+                } else {
+                    System.out.println("Please try again");
+                }
+            
 
             } else if (who == 0) {
                 break;

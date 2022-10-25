@@ -1,9 +1,7 @@
-public class Employee extends Person {
+public class Employee extends Owner {
     private String employee_position;
 
-    public Employee(String employee_id,String employee_name,String employee_phoneNumber,String employee_emailAddress,String employee_password,String employee_position) {
-        super(employee_id, employee_name, employee_phoneNumber,employee_emailAddress, employee_password);
-        this.employee_position = employee_position;
+    public Employee() {
     }
 
     public String getEmployee_position() {
@@ -12,5 +10,23 @@ public class Employee extends Person {
 
     public void setEmployee_position(String employee_position) {
         this.employee_position = employee_position;
+    }
+
+    @Override
+
+    public boolean Login(String username, String password) {
+        if (username.equals("employee1@gmail.com") && password.equals("em01")) {
+            return true;
+        } else if (username.equals("employee2@gmail.com") && password.equals("em02")) {
+            return true;
+        } else if (username.equals("employee3@gmail.com") && password.equals("em03")) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public void say() {
+        System.out.println("Welcome Employee!!!");
     }
 }

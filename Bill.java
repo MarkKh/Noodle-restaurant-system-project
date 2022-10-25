@@ -34,9 +34,7 @@ public class Bill {
         return customer_name;
     }
 
-    public void setCustomerName(Customer customer_name) {
-        this.customer_name = customer_name.getName();
-    }
+
 
     public void createBill(){
         

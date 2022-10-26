@@ -1,37 +1,53 @@
+import java.util.*;
 public class Customer {
-    private String customer_name;
-    private String customer_phoneNumber;
-    public static int count = 0;
+    private ArrayList<String> phoneNumbers = new ArrayList<String>();
+    private ArrayList<String> names = new ArrayList<String>();
+    private String name;
 
+    public Customer(){}
 
-    public Customer(String customer_name, String customer_phoneNumber) {
-        this.customer_name = customer_name;
-        this.customer_phoneNumber = customer_phoneNumber;
-        count++;
+    public ArrayList<String> getPhoneNumbers(){
+        return phoneNumbers;
     }
 
-    public String getCustomerName() {
-        return customer_name;
+    public void addPhoneNumber(String phone){
+        this.phoneNumbers.add(phone);
+    }
+    
+    public ArrayList<String> getName() {
+        return names;
     }
 
-    public void setCustomerName(String customerName) {
-        this.customer_name = customer_name;
+    public void addName(String name){
+        this.names.add(name);
     }
 
-    public String getCustomerPhone() {
-        return customer_phoneNumber;
-    }
-
-    public void setCustomerPhone(String customerPhoneNumber) {
-        this.customer_phoneNumber = customer_phoneNumber;
-    }
-
-    public void customerLogin(String obj) {
-        for(int i = 0; i < count ;i++){
-            if(getCustomerPhone().equals(obj)){
-                System.out.println(getCustomerName());
-            }
+    public void printPhone(){
+        for(String phone : phoneNumbers){
+            System.out.println(phone);
         }
+    }
+
+    public void printName(){
+        for(String name : names){
+            System.out.println(name);
+        }
+    }
+
+    public boolean login(String password){
+        int x = phoneNumbers.indexOf(password);
+
+        this.name = names.get(x);
+        return true;
+    }
+
+    public void register(String p,String n){
+        this.phoneNumbers.add(p);
+        this.names.add(n);
+    }
+
+    public String get_Name(){
+        return name;
     }
 
 }

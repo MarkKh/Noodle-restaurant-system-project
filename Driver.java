@@ -8,7 +8,6 @@ public class Driver {
         Scanner scanner = new Scanner(System.in);
 
         ArrayList<Item> Items = new ArrayList<>();
-        ArrayList<String> options = new ArrayList<>();
         Item item = new Item();
         Table table = new Table();
         Customer customer = new Customer();
@@ -81,6 +80,7 @@ public class Driver {
 
                         System.out.println();
                         for (int i = 0; i < total; ++i) {
+                            ArrayList<String> options = new ArrayList<>();
 
                             System.out.println();
                             for (Item ite : items) {
@@ -188,6 +188,8 @@ public class Driver {
                         income.addValue(va);
                         income.addDescription(de);
 
+                    } else {
+                        System.out.println("Please try again");
                     }
                 } else if (a == 2) {
                     System.out.println("Enter your phone : ");
@@ -219,7 +221,12 @@ public class Driver {
                         } else if (employee_do == 1) {
 
                             if (orders.getOrderPreparing() == 1) {
-                                System.out.println("");
+                                System.out.println(
+                                        "--------------------------------------------------------------------");
+                                System.out.println(
+                                        "                               No Order                             ");
+                                System.out.println(
+                                        "--------------------------------------------------------------------");
                             } else {
                                 System.out.println(
                                         "--------------------------------------------------------------------");

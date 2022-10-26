@@ -5,7 +5,7 @@ public class Item {
     private String item_name;
     private double item_price;
     private String size;
-    private ArrayList<String> item_options;
+    private ArrayList<String> item_options = new ArrayList<>();
 
     public Item(String item_id, String item_name, double item_price) {
         this.item_id = item_id;

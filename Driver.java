@@ -13,6 +13,8 @@ public class Driver {
         Item itemm = new Item();
         Order orders = new Order(Items);
         Bill bill = new Bill();
+        Income income = new Income();
+        Expenses expense = new Expenses();
         ArrayList<String> option = new ArrayList<>();
 
         Item[] item = new Item[4];
@@ -25,6 +27,16 @@ public class Driver {
         customer.addPhoneNumber("0616768126");
         customer.addName("Nan kanyarat");
         customer.addPhoneNumber("0873986487");
+
+        income.addValue(20.00);
+        income.addDescription("xxxxx");
+        income.addValue(40.00);
+        income.addDescription("yyyyy");
+
+        expense.addValue(330.00);
+        expense.addDescription("xxxx");
+        expense.addValue(1230.00);
+        expense.addDescription("yyyy");
 
         while (true) {
             System.out.println("Who are you?");
@@ -258,6 +270,25 @@ public class Driver {
                 boolean x = owner.Login(username, password);
                 if (x == true) {
                     owner.say();
+                    while (true) {
+                        System.out.println("\nWhat do you want to do?" + "\n1. Check All Income"
+                                + "\n2. Check All Expenses" + "\n3. Check Sum of Income" + "\n4. Chaeck Sum of Expenses"
+                                + "\n5. Check Balance" + "\n6. Add Income" + "\n7. Add Expenses"+"\n0. exit");
+                        int own_choose = scanner.nextInt();
+                        if(own_choose == 1){
+                            income.printAll();
+                        } else if (own_choose == 2){
+                            expense.printAll();
+                        } else if (own_choose == 3){
+                            income.printSum();
+                        } else if (own_choose == 4){
+                            expense.printSum();
+                        } else if (own_choose == 5){
+                            System.out.println("------------------------------");
+                            System.out.println("Total Balance is : " +(income.getSum()-expense.getSum())+" Baht");
+                            System.out.println("------------------------------");
+                        }
+                    }
                 } else {
                     System.out.println("Please try again");
                 }

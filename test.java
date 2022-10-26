@@ -4,35 +4,29 @@ public class test {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        Customer customer = new Customer();
+        Income income = new Income();
+        Expenses expense = new Expenses();
 
-        customer.addName("Mark Khomsan");
-        customer.addPhoneNumber("0616768126");
-        customer.addName("Nan kanyarat");
-        customer.addPhoneNumber("0873986487");
+        income.addValue(20.00);
+        income.addDescription("xxxxx");
+        income.addValue(40.00);
+        income.addDescription("yyyyy");
+
+        income.printAll();
+
+        income.printSum();
 
 
-        customer.printPhone();
-        customer.printName();
+        expense.addValue(330.00);
+        expense.addDescription("xxxx");
+        expense.addValue(1230.00);
+        expense.addDescription("yyyy");
 
-        String log = scanner.next();
+        expense.printAll();
+        expense.printSum();
 
-        customer.login(log);
-        System.out.println("cus name  is " + customer.get_Name());
-
-        System.out.println("phone");
-        String p = scanner.next();
-        System.out.println("name");
-        String n = scanner.next();
-        customer.register(p,n);
-
-        customer.printPhone();
-        customer.printName();
-
-        String logs = scanner.next();
-
-        customer.login(logs);
-        System.out.println("cus name  is " + customer.get_Name());
-
+        double a = income.getSum();
+        double b = expense.getSum();
+        System.out.println("all accoutiing  "+ (a-b));
     }
 }

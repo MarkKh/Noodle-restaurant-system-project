@@ -1,62 +1,44 @@
+import java.util.*;
+
 public class Accounting {
-    private String id;
-    private double value;
-    private String description;
-    private double balance;
-    private double[] totalValue;
+    private ArrayList<Double> values = new ArrayList<Double>();
+    private ArrayList<String> descriptions = new ArrayList<String>();
 
-    public Accounting(String id, double value, String description) {
-        this.id = id;
-        this.value = value;
-        this.description = description;
+    public Accounting() {
     }
 
-    public Accounting(){}
-
-    public String getId() {
-        return id;
+    public ArrayList<Double> getValues() {
+        return values;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public ArrayList<String> getDescription() {
+        return descriptions;
     }
 
-    public double getValue() {
-        return value;
+    public void addValue(Double value) {
+        this.values.add(value);
     }
 
-    public void setValue(double value) {
-        this.value = value;
+    public void addDescription(String description) {
+        this.descriptions.add(description);
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public double getBalance() {
-        return balance;
-    }
-
-    public void setBalance(double balance) {
-        this.balance = balance;
-    }
-
-    public double[] getTotalValue() {
-        return totalValue;
-    }
-
-    public void setTotalValue(double[] value) {
-        this.totalValue = value;
-    }
-
-    public void showTotalValue(double[] totalValue) {
-        for (double i : totalValue) {
-            System.out.println(i + "...");
+    public void printAll() {
+        System.out.println("-------------------------");
+        for (int i = 0; i < values.size(); i++) {
+            System.out.println(values.get(i) + "     " + descriptions.get(i));
         }
-        System.out.println("end");
+        System.out.println("-------------------------");
+    }
+
+    public void printSum() {
+        System.out.println("-------------------------");
+        System.out.println("Sum all is : " + getSum());
+        System.out.println("-------------------------");
+
+    }
+
+    public double getSum() {
+        return values.stream().mapToDouble(f -> f.doubleValue()).sum();
     }
 }

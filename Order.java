@@ -5,6 +5,7 @@ public class Order {
     private final ArrayList<Item> Items;
     private int order_preparing = 0;
     private double order_total_amount;
+    private Income income;
 
     public Order(ArrayList<Item> Items) {
         this.Items = Items;
@@ -28,6 +29,7 @@ public class Order {
 
     public void setOrderId(String order_id) {
         this.order_id = order_id;
+        income.addDescription(order_id);
     }
 
     public Double getOrderTotalAmount() {
@@ -72,6 +74,8 @@ public class Order {
                 order_total_amount += Large;
             }
         }
+
+        income.addValue(order_total_amount);
     }
 
 }

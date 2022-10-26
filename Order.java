@@ -5,7 +5,6 @@ import java.util.UUID;
 public class Order {
     private String order_id;
     private final ArrayList<Item> Items;
-    private Table order_table;
     private double order_total_amount;
 
 
@@ -18,12 +17,12 @@ public class Order {
     }
 
     public String getOrderId() {
+        UUID randomUUID = UUID.randomUUID();
+        order_id = randomUUID.toString().replaceAll("-", "");
         return order_id;
     }
 
-    public void setOrderId(String order_id) {
-        this.order_id = order_id;
-    }
+
 
     public Double getOrderTotalAmount() {
         return order_total_amount;
@@ -32,7 +31,6 @@ public class Order {
 
     public void printOrderSummary() {
         double amount = 0;
-        UUID randomUUID = UUID.randomUUID();
         System.out.println();
 
         for (Item item : Items) {
@@ -48,7 +46,7 @@ public class Order {
         
         System.out.println("Total price of this order is " + getOrderTotalAmount() + " Baht");
         System.out.println();
-        System.out.println("Order id "+randomUUID.toString().replaceAll("-", ""));
+        System.out.println("Order id "+getOrderId());
     }
 
     public void calculateTotalOrder() {

@@ -26,10 +26,12 @@ public class Driver {
             if (who == 1) {
                 String tableNumber;
 
-                System.out.println(""+"\n1.at restaurant"+"\n2.Take home");
+                System.out.println("\nChoose one");
+                System.out.println("1.at restaurant"+"\n2.Take home");
+                System.out.println("Enter 1 or 2 : ");
                 int choose = scanner.nextInt();
                 if (choose == 1){
-                    System.out.println("Enter table number : ");
+                    System.out.println("\nEnter table number : ");
                     tableNumber = scanner.next();
                     table.setTable(tableNumber);
                 } else if (choose == 2){
@@ -38,9 +40,10 @@ public class Driver {
                 }
 
 
-                System.out.println("Enter the total Menu you would like to order : ");
+                System.out.println("\nEnter the total Menu you would like to order : ");
                 int total = scanner.nextInt();
 
+                System.out.println();
                 for (int i = 0; i < total; ++i) {
                     Item itemm = new Item();
 
@@ -71,14 +74,14 @@ public class Driver {
                     }
 
                     String size;
-                    System.out.println("Bowl size(Large, Medium, Small) : ");
+                    System.out.println("\nBowl size(Large, Medium, Small) : ");
                     size = scanner.next();
                     itemm.setSize(size);
                     option.add(size);
 
                     String RiceNoodles;
                     System.out.println(
-                            "Rice Noodles(1. Rice Vermicelli, 2. Rice Stick Noodles, 3. Wide Rice Noodles, 4. Glass Noodles, 5. Egg Noodles, 6. Instant Noodles) : ");
+                            "\nRice Noodles(1. Rice Vermicelli, 2. Rice Stick Noodles, 3. Wide Rice Noodles, 4. Glass Noodles, 5. Egg Noodles, 6. Instant Noodles) : ");
                     RiceNoodles = scanner.next();
                     String xRiceNoodles;
                     if (RiceNoodles.equals("1")) {
@@ -104,7 +107,7 @@ public class Driver {
                     }
 
                     String meat;
-                    System.out.println("Meat(1. Marinated Pork, 2. Braised Pork, 3. Meatball, 4. Pork liver) : ");
+                    System.out.println("\nMeat(1. Marinated Pork, 2. Braised Pork, 3. Meatball, 4. Pork liver) : ");
                     meat = scanner.next();
                     String xMeat;
                     if (meat.equals("1")) {
@@ -124,7 +127,7 @@ public class Driver {
                     }
 
                     String note;
-                    System.out.println("Note : ");
+                    System.out.println("\nNote : ");
                     note = scanner.next();
                     option.add(note);
 
@@ -134,10 +137,10 @@ public class Driver {
 
                 Order orders = new Order(Items);
                 orders.calculateTotalOrder();
-                System.out.println("-----------------------------Ordered is-----------------------------");
+                System.out.println("\n-----------------------------Ordered is-----------------------------");
                 System.out.println("Table number " + table.getTable());
                 orders.printOrderSummary();
-                System.out.println("--------------------------------------------------------------------");
+                System.out.println("--------------------------------------------------------------------\n");
 
             } else if (who == 2) {
                 Employee employee = new Employee();

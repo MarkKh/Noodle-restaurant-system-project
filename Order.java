@@ -1,12 +1,10 @@
 import java.util.ArrayList;
-import java.util.UUID;
-
 
 public class Order {
     private String order_id;
     private final ArrayList<Item> Items;
+    private int order_preparing = 0;
     private double order_total_amount;
-
 
     public Order(ArrayList<Item> Items) {
         this.Items = Items;
@@ -17,36 +15,45 @@ public class Order {
     }
 
     public String getOrderId() {
-        UUID randomUUID = UUID.randomUUID();
-        order_id = randomUUID.toString().replaceAll("-", "");
         return order_id;
     }
 
+    public int getOrderPreparing() {
+        return order_preparing;
+    }
 
+    public void setOrderPreparing(int orderPreparing) {
+        this.order_preparing = orderPreparing;
+    }
+
+    public void setOrderId(String order_id) {
+        this.order_id = order_id;
+    }
 
     public Double getOrderTotalAmount() {
         return order_total_amount;
     }
 
-
     public void printOrderSummary() {
         double amount = 0;
-        System.out.println();
-
-        for (Item item : Items) {
-            if (item.getSize().equalsIgnoreCase("Small") || item.getSize().equalsIgnoreCase("s")) {
-                amount = 30;
-            } else if (item.getSize().equalsIgnoreCase("Medium") || item.getSize().equalsIgnoreCase("m")) {
-                amount = 40;
-            } else if (item.getSize().equalsIgnoreCase("Large") || item.getSize().equalsIgnoreCase("l")) {
-                amount = 50;
+        if (order_id == null) {
+            System.out.println("No Order");
+        } else {
+            for (Item item : Items) {
+                if (item.getSize().equalsIgnoreCase("Small") || item.getSize().equalsIgnoreCase("s")) {
+                    amount = 30;
+                } else if (item.getSize().equalsIgnoreCase("Medium") || item.getSize().equalsIgnoreCase("m")) {
+                    amount = 40;
+                } else if (item.getSize().equalsIgnoreCase("Large") || item.getSize().equalsIgnoreCase("l")) {
+                    amount = 50;
+                }
+                System.out.println(item.getItemOptions() + " " + amount + " Baht");
             }
-            System.out.println(item.getItemOptions() + " " + amount + " Baht");
+
+            System.out.println("Total price of this order is " + getOrderTotalAmount() + " Baht");
+            System.out.println();
+            System.out.println("Order id " + getOrderId());
         }
-        
-        System.out.println("Total price of this order is " + getOrderTotalAmount() + " Baht");
-        System.out.println();
-        System.out.println("Order id "+getOrderId());
     }
 
     public void calculateTotalOrder() {

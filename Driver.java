@@ -1,4 +1,7 @@
 import java.util.*;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Calendar;
 
 public class Driver {
     public static void main(String[] args) {
@@ -6,6 +9,10 @@ public class Driver {
 
         ArrayList<Item> Items = new ArrayList<>();
         Table table = new Table();
+        Item itemm = new Item();
+        Order orders = new Order(Items);
+        Bill bill = new Bill();
+        ArrayList<String> option = new ArrayList<>();
 
         Item[] item = new Item[4];
         item[0] = new Item("001", "Noodles blood soup", 30);
@@ -27,27 +34,23 @@ public class Driver {
                 String tableNumber;
 
                 System.out.println("\nChoose one");
-                System.out.println("1.at restaurant"+"\n2.Take home");
+                System.out.println("1.at restaurant" + "\n2.Take home");
                 System.out.println("Enter 1 or 2 : ");
                 int choose = scanner.nextInt();
-                if (choose == 1){
+                if (choose == 1) {
                     System.out.println("\nEnter table number : ");
                     tableNumber = scanner.next();
                     table.setTable(tableNumber);
-                } else if (choose == 2){
+                } else if (choose == 2) {
                     tableNumber = "[ Take home ]";
                     table.setTable(tableNumber);
                 }
-
 
                 System.out.println("\nEnter the total Menu you would like to order : ");
                 int total = scanner.nextInt();
 
                 System.out.println();
                 for (int i = 0; i < total; ++i) {
-                    Item itemm = new Item();
-
-                    ArrayList<String> option = new ArrayList<>();
 
                     for (Item ite : item) {
                         System.out.println(ite.toString());
@@ -133,9 +136,13 @@ public class Driver {
 
                     itemm.setItemOptions(option);
                     Items.add(itemm);
+
                 }
 
-                Order orders = new Order(Items);
+                UUID randomUUID = UUID.randomUUID();
+                String randomId = randomUUID.toString().replaceAll("-", "");
+
+                orders.setOrderId(randomId);
                 orders.calculateTotalOrder();
                 System.out.println("\n-----------------------------Ordered is-----------------------------");
                 System.out.println("Table number " + table.getTable());
@@ -151,12 +158,62 @@ public class Driver {
                 boolean x = employee.Login(username, password);
                 if (x == true) {
                     employee.say();
+
+                    while (true) {
+                        System.out.println("\n1. CheckOrdering" + "\n2. Receipt" + "\n0. exit");
+
+                        System.out.println("What will you do?");
+                        int employee_do = scanner.nextInt();
+
+                        if (employee_do == 0) {
+                            break;
+                        } else if (employee_do == 1) {
+
+                            if (orders.getOrderPreparing() == 1) {
+                                System.out.println("");
+                            } else {
+                                System.out.println(
+                                        "--------------------------------------------------------------------");
+                                orders.printOrderSummary();
+                                System.out
+                                        .println(
+                                                "--------------------------------------------------------------------\n");
+
+                                System.out.println("\nHave you completed this order(Y/N) ?");
+                                String CheckOrderPreparing = scanner.next();
+
+                                if (CheckOrderPreparing.equalsIgnoreCase("y")){
+                                    orders.setOrderPreparing(1);
+                                }
+                            }
+
+                        } else if (employee_do == 2) {
+                            String timeStamp = new SimpleDateFormat("yyyy/MM/dd  HH:mm:ss")
+                                    .format(Calendar.getInstance().getTime());
+                            bill.setBillDate(timeStamp);
+                            System.out.println("\n-----------------------------  Bill ------------------------------");
+                            bill.showBill();
+                            orders.printOrderSummary();
+                            System.out
+                                    .println("--------------------------------------------------------------------\n");
+
+                            System.out.println("do yo want to clear this order(Y/N) ?");
+                            String choose = scanner.next();
+                            if (choose.equalsIgnoreCase("y")) {
+                                orders.setOrderId(null);
+                                table.setTable(null);
+                                Items.clear();
+                            } else {
+
+                            }
+                        }
+
+                    }
+
                 } else {
                     System.out.println("Please try again");
                 }
 
-                // Order order = new Order(Items);
-                // order.printOrderSummary();
             } else if (who == 3) {
                 Owner owner = new Owner();
                 System.out.println("Username : ");

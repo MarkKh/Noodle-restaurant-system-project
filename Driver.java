@@ -202,6 +202,8 @@ public class Driver {
                             } else {
                                 System.out.println(
                                         "--------------------------------------------------------------------");
+                                System.out.println("Table number " + table.getTable());
+                                System.out.println("Ordered by  " + customer.get_Name());
                                 orders.printOrderSummary();
                                 System.out
                                         .println(
@@ -221,7 +223,9 @@ public class Driver {
                             bill.setBillDate(timeStamp);
                             System.out.println("\n-----------------------------  Bill ------------------------------");
                             bill.showBill();
+                            System.out.println("Table number " + table.getTable());
                             orders.printOrderSummary();
+                            System.out.println("Ordered by  " + customer.get_Name());
                             System.out
                                     .println("--------------------------------------------------------------------\n");
 

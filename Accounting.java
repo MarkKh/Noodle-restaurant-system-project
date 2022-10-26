@@ -25,6 +25,7 @@ public class Accounting {
 
     public void printAll() {
         System.out.println("-------------------------");
+        System.out.println("Value     Descriptions");
         for (int i = 0; i < values.size(); i++) {
             System.out.println(values.get(i) + "     " + descriptions.get(i));
         }

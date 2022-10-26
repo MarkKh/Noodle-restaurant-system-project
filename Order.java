@@ -29,7 +29,6 @@ public class Order {
 
     public void setOrderId(String order_id) {
         this.order_id = order_id;
-        income.addDescription(order_id);
     }
 
     public Double getOrderTotalAmount() {
@@ -75,7 +74,6 @@ public class Order {
             }
         }
 
-        income.addValue(order_total_amount);
     }
 
 }

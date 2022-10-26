@@ -54,7 +54,7 @@ public class Driver {
                 int a = scanner.nextInt();
 
                 if (a == 1) {
-                    System.out.println("Enter your phone number : ");
+                    System.out.println("\nEnter your phone number : ");
                     String phone = scanner.next();
                     boolean b = customer.login(phone);
 
@@ -168,6 +168,8 @@ public class Driver {
                             Items.add(itemm);
 
                         }
+                        
+                        
 
                         UUID randomUUID = UUID.randomUUID();
                         String randomId = randomUUID.toString().replaceAll("-", "");
@@ -181,6 +183,10 @@ public class Driver {
                         System.out.println("--------------------------------------------------------------------\n");
 
                         orders.setOrderPreparing(0);
+                        double va = orders.getOrderTotalAmount();
+                        String de = orders.getOrderId();
+                        income.addValue(va);
+                        income.addDescription(de);
 
                     }
                 } else if (a == 2) {
@@ -287,6 +293,24 @@ public class Driver {
                             System.out.println("------------------------------");
                             System.out.println("Total Balance is : " +(income.getSum()-expense.getSum())+" Baht");
                             System.out.println("------------------------------");
+                        } else if (own_choose == 6){
+                            System.out.println("Add Income");
+                            System.out.println("Enter value :");
+                            double value = scanner.nextDouble();
+                            income.addValue(value);
+                            System.out.println("Enter Description :");
+                            String description = scanner.next();
+                            income.addDescription(description);
+                        } else if (own_choose == 7){
+                            System.out.println("Add Expenses");
+                            System.out.println("Enter value :");
+                            double value = scanner.nextDouble();
+                            expense.addValue(value);
+                            System.out.println("Enter Description :");
+                            String description = scanner.next();
+                            expense.addDescription(description);
+                        } else{
+                            break;
                         }
                     }
                 } else {

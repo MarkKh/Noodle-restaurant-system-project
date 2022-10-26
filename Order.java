@@ -5,14 +5,9 @@ public class Order {
     private final ArrayList<Item> Items;
     private int order_preparing = 0;
     private double order_total_amount;
-    private Income income;
 
     public Order(ArrayList<Item> Items) {
         this.Items = Items;
-    }
-
-    public ArrayList<Item> Items() {
-        return Items;
     }
 
     public String getOrderId() {

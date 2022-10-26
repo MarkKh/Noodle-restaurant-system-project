@@ -1,9 +1,5 @@
 public class Bill {
     private String bill_date;
-    private Item item;
-    private Order order_list;
-    private Table table;
-    private Customer customer_name;
 
     public Bill() {
     }

@@ -8,20 +8,20 @@ public class Driver {
         Scanner scanner = new Scanner(System.in);
 
         ArrayList<Item> Items = new ArrayList<>();
+        ArrayList<String> options = new ArrayList<>();
+        Item item = new Item();
         Table table = new Table();
         Customer customer = new Customer();
-        Item itemm = new Item();
-        Order orders = new Order(Items);
         Bill bill = new Bill();
         Income income = new Income();
         Expenses expense = new Expenses();
-        ArrayList<String> option = new ArrayList<>();
+        Order orders = new Order(Items);
 
-        Item[] item = new Item[4];
-        item[0] = new Item("001", "Noodles blood soup", 30);
-        item[1] = new Item("002", "Tom Yum noodle soup", 30);
-        item[2] = new Item("003", "Steamed noodles without soup", 30);
-        item[3] = new Item("004", "Steamed noodles without tom yum soup", 30);
+        Item[] items = new Item[4];
+        items[0] = new Item("001", "Noodles blood soup", 30);
+        items[1] = new Item("002", "Tom Yum noodle soup", 30);
+        items[2] = new Item("003", "Steamed noodles without soup", 30);
+        items[3] = new Item("004", "Steamed noodles without tom yum soup", 30);
 
         customer.addName("Mark Khomsan");
         customer.addPhoneNumber("0616768126");
@@ -39,6 +39,7 @@ public class Driver {
         expense.addDescription("yyyy");
 
         while (true) {
+
             System.out.println("Who are you?");
             System.out.println("1. Customer");
             System.out.println("2. Employee");
@@ -81,7 +82,8 @@ public class Driver {
                         System.out.println();
                         for (int i = 0; i < total; ++i) {
 
-                            for (Item ite : item) {
+                            System.out.println();
+                            for (Item ite : items) {
                                 System.out.println(ite.toString());
                             }
 
@@ -91,25 +93,25 @@ public class Driver {
                             String xmenu;
                             if (menu.equals("001")) {
                                 xmenu = "Noodles blood soup";
-                                option.add(xmenu);
+                                options.add(xmenu);
                             } else if (menu.equals("002")) {
                                 xmenu = "Tom Yum noodle soup";
-                                option.add(xmenu);
+                                options.add(xmenu);
                             } else if (menu.equals("003")) {
                                 xmenu = "Steamed noodles without soup";
-                                option.add(xmenu);
+                                options.add(xmenu);
                             } else if (menu.equals("004")) {
                                 xmenu = "Steamed noodles without tom yum soup";
-                                option.add(xmenu);
+                                options.add(xmenu);
                             } else {
-                                option.add(null);
+                                options.add(null);
                             }
 
                             String size;
                             System.out.println("\nBowl size(Large, Medium, Small) : ");
                             size = scanner.next();
-                            itemm.setSize(size);
-                            option.add(size);
+                            item.setSize(size);
+                            options.add(size);
 
                             String RiceNoodles;
                             System.out.println(
@@ -118,24 +120,24 @@ public class Driver {
                             String xRiceNoodles;
                             if (RiceNoodles.equals("1")) {
                                 xRiceNoodles = "Rice Vermicelli";
-                                option.add(xRiceNoodles);
+                                options.add(xRiceNoodles);
                             } else if (RiceNoodles.equals("2")) {
                                 xRiceNoodles = "Rice Stick Noodles";
-                                option.add(xRiceNoodles);
+                                options.add(xRiceNoodles);
                             } else if (RiceNoodles.equals("3")) {
                                 xRiceNoodles = "Wide Rice Noodles";
-                                option.add(xRiceNoodles);
+                                options.add(xRiceNoodles);
                             } else if (RiceNoodles.equals("4")) {
                                 xRiceNoodles = "Glass Noodles";
-                                option.add(xRiceNoodles);
+                                options.add(xRiceNoodles);
                             } else if (RiceNoodles.equals("5")) {
                                 xRiceNoodles = "Egg Noodles";
-                                option.add(xRiceNoodles);
+                                options.add(xRiceNoodles);
                             } else if (RiceNoodles.equals("6")) {
                                 xRiceNoodles = "Instant Noodles";
-                                option.add(xRiceNoodles);
+                                options.add(xRiceNoodles);
                             } else {
-                                option.add(null);
+                                options.add(null);
                             }
 
                             String meat;
@@ -145,31 +147,29 @@ public class Driver {
                             String xMeat;
                             if (meat.equals("1")) {
                                 xMeat = "Marinated Pork";
-                                option.add(xMeat);
+                                options.add(xMeat);
                             } else if (meat.equals("2")) {
                                 xMeat = "Braised Pork";
-                                option.add(xMeat);
+                                options.add(xMeat);
                             } else if (meat.equals("3")) {
                                 xMeat = "Meatball";
-                                option.add(xMeat);
+                                options.add(xMeat);
                             } else if (meat.equals("4")) {
                                 xMeat = "Pork liver";
-                                option.add(xMeat);
+                                options.add(xMeat);
                             } else {
-                                option.add(null);
+                                options.add(null);
                             }
 
                             String note;
                             System.out.println("\nNote : ");
                             note = scanner.next();
-                            option.add(note);
+                            options.add(note);
 
-                            itemm.setItemOptions(option);
-                            Items.add(itemm);
+                            item.setItemOptions(options);
+                            Items.add(item);
 
                         }
-                        
-                        
 
                         UUID randomUUID = UUID.randomUUID();
                         String randomId = randomUUID.toString().replaceAll("-", "");
@@ -279,21 +279,21 @@ public class Driver {
                     while (true) {
                         System.out.println("\nWhat do you want to do?" + "\n1. Check All Income"
                                 + "\n2. Check All Expenses" + "\n3. Check Sum of Income" + "\n4. Chaeck Sum of Expenses"
-                                + "\n5. Check Balance" + "\n6. Add Income" + "\n7. Add Expenses"+"\n0. exit");
+                                + "\n5. Check Balance" + "\n6. Add Income" + "\n7. Add Expenses" + "\n0. exit");
                         int own_choose = scanner.nextInt();
-                        if(own_choose == 1){
+                        if (own_choose == 1) {
                             income.printAll();
-                        } else if (own_choose == 2){
+                        } else if (own_choose == 2) {
                             expense.printAll();
-                        } else if (own_choose == 3){
+                        } else if (own_choose == 3) {
                             income.printSum();
-                        } else if (own_choose == 4){
+                        } else if (own_choose == 4) {
                             expense.printSum();
-                        } else if (own_choose == 5){
+                        } else if (own_choose == 5) {
                             System.out.println("------------------------------");
-                            System.out.println("Total Balance is : " +(income.getSum()-expense.getSum())+" Baht");
+                            System.out.println("Total Balance is : " + (income.getSum() - expense.getSum()) + " Baht");
                             System.out.println("------------------------------");
-                        } else if (own_choose == 6){
+                        } else if (own_choose == 6) {
                             System.out.println("Add Income");
                             System.out.println("Enter value :");
                             double value = scanner.nextDouble();
@@ -301,7 +301,7 @@ public class Driver {
                             System.out.println("Enter Description :");
                             String description = scanner.next();
                             income.addDescription(description);
-                        } else if (own_choose == 7){
+                        } else if (own_choose == 7) {
                             System.out.println("Add Expenses");
                             System.out.println("Enter value :");
                             double value = scanner.nextDouble();
@@ -309,7 +309,7 @@ public class Driver {
                             System.out.println("Enter Description :");
                             String description = scanner.next();
                             expense.addDescription(description);
-                        } else{
+                        } else {
                             break;
                         }
                     }

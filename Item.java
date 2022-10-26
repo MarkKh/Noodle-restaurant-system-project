@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+import java.util.*;
 
 public class Item {
     private String item_id;
@@ -28,9 +28,10 @@ public class Item {
         this.size = size;
     }
 
-    public void setItemOptions(ArrayList<String> item_options) {
-        this.item_options = item_options;
+    public void setItemOptions(ArrayList<String> options) {
+        this.item_options = options;
     }
+
 
     public String getItemId() {
         return item_id;

@@ -167,6 +167,9 @@ public class Driver {
                         System.out.println("Ordered by  " + customer.get_Name());
                         orders.printOrderSummary();
                         System.out.println("--------------------------------------------------------------------\n");
+
+                        orders.setOrderPreparing(0);
+
                     }
                 } else if (a == 2) {
                     System.out.println("Enter your phone : ");

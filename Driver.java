@@ -80,6 +80,7 @@ public class Driver {
 
                         System.out.println();
                         for (int i = 0; i < total; ++i) {
+                            Item item_ = new Item();
                             ArrayList<String> options = new ArrayList<>();
 
                             System.out.println();
@@ -110,7 +111,7 @@ public class Driver {
                             String size;
                             System.out.println("\nBowl size(Large, Medium, Small) : ");
                             size = scanner.next();
-                            item.setSize(size);
+                            item_.setSize(size);
                             options.add(size);
 
                             String RiceNoodles;
@@ -166,8 +167,8 @@ public class Driver {
                             note = scanner.next();
                             options.add(note);
 
-                            item.setItemOptions(options);
-                            Items.add(item);
+                            item_.setItemOptions(options);
+                            Items.add(item_);
 
                         }
 

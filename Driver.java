@@ -59,135 +59,152 @@ public class Driver {
                     boolean b = customer.login(phone);
 
                     if (b == true) {
-                        System.out.println("Hello " + customer.get_Name());
-                        String tableNumber;
 
-                        System.out.println("\nChoose one");
-                        System.out.println("1.at restaurant" + "\n2.Take home");
-                        System.out.println("Enter 1 or 2 : ");
-                        int choose = scanner.nextInt();
-                        if (choose == 1) {
-                            System.out.println("\nEnter table number : ");
-                            tableNumber = scanner.next();
-                            table.setTable(tableNumber);
-                        } else if (choose == 2) {
-                            tableNumber = "[ Take home ]";
-                            table.setTable(tableNumber);
-                        }
+                        System.out.println("\n1. Order" + "\n2. Check Order");
+                        int h = scanner.nextInt();
+                        if (h == 1) {
 
-                        System.out.println("\nEnter the total Menu you would like to order : ");
-                        int total = scanner.nextInt();
+                            System.out.println("Hello " + customer.get_Name());
+                            String tableNumber;
 
-                        System.out.println();
-                        for (int i = 0; i < total; ++i) {
-                            Item item_ = new Item();
-                            ArrayList<String> options = new ArrayList<>();
+                            System.out.println("\nChoose one");
+                            System.out.println("1.at restaurant" + "\n2.Take home");
+                            System.out.println("Enter 1 or 2 : ");
+                            int choose = scanner.nextInt();
+                            if (choose == 1) {
+                                System.out.println("\nEnter table number : ");
+                                tableNumber = scanner.next();
+                                table.setTable(tableNumber);
+                            } else if (choose == 2) {
+                                tableNumber = "[ Take home ]";
+                                table.setTable(tableNumber);
+                            }
+
+                            System.out.println("\nEnter the total Menu you would like to order : ");
+                            int total = scanner.nextInt();
 
                             System.out.println();
-                            for (Item ite : items) {
-                                System.out.println(ite.toString());
+                            for (int i = 0; i < total; ++i) {
+                                Item item_ = new Item();
+                                ArrayList<String> options = new ArrayList<>();
+
+                                System.out.println();
+                                for (Item ite : items) {
+                                    System.out.println(ite.toString());
+                                }
+
+                                String menu;
+                                System.out.println("Enter menu what you want :");
+                                menu = scanner.next();
+                                String xmenu;
+                                if (menu.equals("001")) {
+                                    xmenu = "Noodles blood soup";
+                                    options.add(xmenu);
+                                } else if (menu.equals("002")) {
+                                    xmenu = "Tom Yum noodle soup";
+                                    options.add(xmenu);
+                                } else if (menu.equals("003")) {
+                                    xmenu = "Steamed noodles without soup";
+                                    options.add(xmenu);
+                                } else if (menu.equals("004")) {
+                                    xmenu = "Steamed noodles without tom yum soup";
+                                    options.add(xmenu);
+                                } else {
+                                    options.add(null);
+                                }
+
+                                String size;
+                                System.out.println("\nBowl size(Large, Medium, Small) : ");
+                                size = scanner.next();
+                                item_.setSize(size);
+                                options.add(size);
+
+                                String RiceNoodles;
+                                System.out.println(
+                                        "\nRice Noodles(1. Rice Vermicelli, 2. Rice Stick Noodles, 3. Wide Rice Noodles, 4. Glass Noodles, 5. Egg Noodles, 6. Instant Noodles) : ");
+                                RiceNoodles = scanner.next();
+                                String xRiceNoodles;
+                                if (RiceNoodles.equals("1")) {
+                                    xRiceNoodles = "Rice Vermicelli";
+                                    options.add(xRiceNoodles);
+                                } else if (RiceNoodles.equals("2")) {
+                                    xRiceNoodles = "Rice Stick Noodles";
+                                    options.add(xRiceNoodles);
+                                } else if (RiceNoodles.equals("3")) {
+                                    xRiceNoodles = "Wide Rice Noodles";
+                                    options.add(xRiceNoodles);
+                                } else if (RiceNoodles.equals("4")) {
+                                    xRiceNoodles = "Glass Noodles";
+                                    options.add(xRiceNoodles);
+                                } else if (RiceNoodles.equals("5")) {
+                                    xRiceNoodles = "Egg Noodles";
+                                    options.add(xRiceNoodles);
+                                } else if (RiceNoodles.equals("6")) {
+                                    xRiceNoodles = "Instant Noodles";
+                                    options.add(xRiceNoodles);
+                                } else {
+                                    options.add(null);
+                                }
+
+                                String meat;
+                                System.out.println(
+                                        "\nMeat(1. Marinated Pork, 2. Braised Pork, 3. Meatball, 4. Pork liver) : ");
+                                meat = scanner.next();
+                                String xMeat;
+                                if (meat.equals("1")) {
+                                    xMeat = "Marinated Pork";
+                                    options.add(xMeat);
+                                } else if (meat.equals("2")) {
+                                    xMeat = "Braised Pork";
+                                    options.add(xMeat);
+                                } else if (meat.equals("3")) {
+                                    xMeat = "Meatball";
+                                    options.add(xMeat);
+                                } else if (meat.equals("4")) {
+                                    xMeat = "Pork liver";
+                                    options.add(xMeat);
+                                } else {
+                                    options.add(null);
+                                }
+
+                                String note;
+                                System.out.println("\nNote : ");
+                                note = scanner.next();
+                                options.add(note);
+
+                                item_.setItemOptions(options);
+                                Items.add(item_);
+
                             }
 
-                            String menu;
-                            System.out.println("Enter menu what you want :");
-                            menu = scanner.next();
-                            String xmenu;
-                            if (menu.equals("001")) {
-                                xmenu = "Noodles blood soup";
-                                options.add(xmenu);
-                            } else if (menu.equals("002")) {
-                                xmenu = "Tom Yum noodle soup";
-                                options.add(xmenu);
-                            } else if (menu.equals("003")) {
-                                xmenu = "Steamed noodles without soup";
-                                options.add(xmenu);
-                            } else if (menu.equals("004")) {
-                                xmenu = "Steamed noodles without tom yum soup";
-                                options.add(xmenu);
-                            } else {
-                                options.add(null);
-                            }
+                            UUID randomUUID = UUID.randomUUID();
+                            String randomId = randomUUID.toString().replaceAll("-", "");
 
-                            String size;
-                            System.out.println("\nBowl size(Large, Medium, Small) : ");
-                            size = scanner.next();
-                            item_.setSize(size);
-                            options.add(size);
+                            orders.setOrderId(randomId);
+                            orders.calculateTotalOrder();
+                            System.out
+                                    .println("\n-----------------------------Ordered is-----------------------------");
+                            System.out.println("Table number " + table.getTable());
+                            System.out.println("Ordered by  " + customer.get_Name());
+                            orders.printOrderSummary();
+                            System.out
+                                    .println("--------------------------------------------------------------------\n");
 
-                            String RiceNoodles;
-                            System.out.println(
-                                    "\nRice Noodles(1. Rice Vermicelli, 2. Rice Stick Noodles, 3. Wide Rice Noodles, 4. Glass Noodles, 5. Egg Noodles, 6. Instant Noodles) : ");
-                            RiceNoodles = scanner.next();
-                            String xRiceNoodles;
-                            if (RiceNoodles.equals("1")) {
-                                xRiceNoodles = "Rice Vermicelli";
-                                options.add(xRiceNoodles);
-                            } else if (RiceNoodles.equals("2")) {
-                                xRiceNoodles = "Rice Stick Noodles";
-                                options.add(xRiceNoodles);
-                            } else if (RiceNoodles.equals("3")) {
-                                xRiceNoodles = "Wide Rice Noodles";
-                                options.add(xRiceNoodles);
-                            } else if (RiceNoodles.equals("4")) {
-                                xRiceNoodles = "Glass Noodles";
-                                options.add(xRiceNoodles);
-                            } else if (RiceNoodles.equals("5")) {
-                                xRiceNoodles = "Egg Noodles";
-                                options.add(xRiceNoodles);
-                            } else if (RiceNoodles.equals("6")) {
-                                xRiceNoodles = "Instant Noodles";
-                                options.add(xRiceNoodles);
-                            } else {
-                                options.add(null);
-                            }
-
-                            String meat;
-                            System.out.println(
-                                    "\nMeat(1. Marinated Pork, 2. Braised Pork, 3. Meatball, 4. Pork liver) : ");
-                            meat = scanner.next();
-                            String xMeat;
-                            if (meat.equals("1")) {
-                                xMeat = "Marinated Pork";
-                                options.add(xMeat);
-                            } else if (meat.equals("2")) {
-                                xMeat = "Braised Pork";
-                                options.add(xMeat);
-                            } else if (meat.equals("3")) {
-                                xMeat = "Meatball";
-                                options.add(xMeat);
-                            } else if (meat.equals("4")) {
-                                xMeat = "Pork liver";
-                                options.add(xMeat);
-                            } else {
-                                options.add(null);
-                            }
-
-                            String note;
-                            System.out.println("\nNote : ");
-                            note = scanner.next();
-                            options.add(note);
-
-                            item_.setItemOptions(options);
-                            Items.add(item_);
+                            orders.setOrderPreparing(0);
+                            double va = orders.getOrderTotalAmount();
+                            String de = orders.getOrderId();
+                            income.addValue(va);
+                            income.addDescription(de);
+                        } else if (h == 2) {
+                            System.out
+                                    .println("\n-----------------------------Ordered is-----------------------------");
+                            System.out.println("Table number " + table.getTable());
+                            System.out.println("Ordered by  " + customer.get_Name());
+                            orders.printOrderSummary();
+                            System.out
+                                    .println("--------------------------------------------------------------------\n");
 
                         }
-
-                        UUID randomUUID = UUID.randomUUID();
-                        String randomId = randomUUID.toString().replaceAll("-", "");
-
-                        orders.setOrderId(randomId);
-                        orders.calculateTotalOrder();
-                        System.out.println("\n-----------------------------Ordered is-----------------------------");
-                        System.out.println("Table number " + table.getTable());
-                        System.out.println("Ordered by  " + customer.get_Name());
-                        orders.printOrderSummary();
-                        System.out.println("--------------------------------------------------------------------\n");
-
-                        orders.setOrderPreparing(0);
-                        double va = orders.getOrderTotalAmount();
-                        String de = orders.getOrderId();
-                        income.addValue(va);
-                        income.addDescription(de);
 
                     } else {
                         System.out.println("Please try again");

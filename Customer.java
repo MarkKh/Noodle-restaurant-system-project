@@ -50,4 +50,8 @@ public class Customer {
         return name;
     }
 
+    public void set_Name(String name){
+        this.name = name;
+    }
+
 }

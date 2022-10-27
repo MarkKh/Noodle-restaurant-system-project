@@ -24,7 +24,7 @@ public class Driver {
 
         customer.addName("Mark Khomsan");
         customer.addPhoneNumber("0616768126");
-        customer.addName("Nan kanyarat");
+        customer.addName("Nan Kanyarat");
         customer.addPhoneNumber("0873986487");
 
         income.addValue(20.00);
@@ -33,9 +33,9 @@ public class Driver {
         income.addDescription("yyyyy");
 
         expense.addValue(330.00);
-        expense.addDescription("xxxx");
+        expense.addDescription("aaaaa");
         expense.addValue(1230.00);
-        expense.addDescription("yyyy");
+        expense.addDescription("bbbbb");
 
         while (true) {
 
@@ -264,6 +264,7 @@ public class Driver {
                                 orders.setOrderId(null);
                                 table.setTable(null);
                                 Items.clear();
+                                customer.set_Name(null);
                             } else {
 
                             }
